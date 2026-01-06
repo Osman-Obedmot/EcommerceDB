@@ -5,11 +5,9 @@ const prisma = new PrismaClient();
 
 const jwt = require("jsonwebtoken");
 
-const Token = jwt.sign(
-  { userId: 1 },
-  process.env.JWT_SECRET,
-  { expiresIn: "1h" }
-);
+const Token = jwt.sign({ userId: 1 }, process.env.JWT_SECRET, {
+  expiresIn: "1h",
+});
 
 const validate = require("../middleware/validate");
 const orderSchema = require("../validater-joi/products.schema");
@@ -22,10 +20,6 @@ describe("Order endpoint tests", () => {
         productName: "iPhone 14 Pro Max",
         quantity: 1,
       },
-      // {
-      //   productName: "T-shirt",
-      //   quantity: 1,
-      // },
     ],
   };
 

@@ -54,9 +54,9 @@ describe("User endpoint tests", () => {
     console.log("User is ===>", response.text);
   });
 
-  afterAll(async () => {
-    await prisma.user.delete({
-      where: { email: testUser.email },
-    });
-  });
+  // afterAll(async () => {
+  //   await prisma.user.delete({
+  //     where: { email: testUser.email },
+  //   });
+  // });
 });
