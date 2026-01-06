@@ -67,14 +67,14 @@ describe("Product endpoint tests", () => {
   //   console.log("Deleted Product ===>", response.text);
   // });
 
-  afterAll(async () => {
-    await prisma.product.deleteMany({
-      where: {
-        OR: [
-          { productId: testProduct.productId },
-          { productName: testProduct.productName },
-        ],
-      },
-    });
-  });
+  // afterAll(async () => {
+  //   await prisma.product.deleteMany({
+  //     where: {
+  //       OR: [
+  //         { productId: testProduct.productId },
+  //         { productName: testProduct.productName },
+  //       ],
+  //     },
+  //   });
+  // });
 });
