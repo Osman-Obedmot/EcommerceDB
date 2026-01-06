@@ -1,0 +1,52 @@
+name: CI for API Tests
+
+# Trigger the workflow on push or pull request to the main branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  DATABASE_URL: postgresql://postgres:osGIS@2025@localhost:5432/ecommercedb?schema=public
+  JWT_SECRET: 3comm3rc3stor3
+
+# Define the jobs to run in this workflow
+jobs:
+  test_api:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: osGIS@2025
+          POSTGRES_DB: ecommercedb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run database migrations
+        run: npx prisma migrate deploy
+
+      - name: Run API tests
+        run: npm test
