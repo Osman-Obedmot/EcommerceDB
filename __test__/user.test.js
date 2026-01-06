@@ -33,8 +33,8 @@ describe("User endpoint tests", () => {
 
   it("Login user using POST api/v1/users/auth/login", async () => {
     const LoginUser = {
-      email: "john@gmail.com",
-      password: "John@5000",
+      email: "Testuser@gmail.com",
+      password: "Test@5000",
     };
     const response = await request(app)
       .post("/api/v1/users/auth/login")

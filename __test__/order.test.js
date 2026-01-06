@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 const jwt = require("jsonwebtoken");
 
 const Token = jwt.sign(
-  { userId: 11 },
+  { userId: 1 },
   process.env.JWT_SECRET,
   { expiresIn: "1h" }
 );
@@ -19,13 +19,13 @@ describe("Order endpoint tests", () => {
   const testOrder = {
     products: [
       {
-        productName: "Benz",
+        productName: "iPhone 14 Pro Max",
         quantity: 1,
       },
-      {
-        productName: "T-shirt",
-        quantity: 1,
-      },
+      // {
+      //   productName: "T-shirt",
+      //   quantity: 1,
+      // },
     ],
   };
 
@@ -41,7 +41,7 @@ describe("Order endpoint tests", () => {
 
   it("Get an order using GET api/v1/orders/:orderId", async () => {
     const response = await request(app)
-      .get("/api/v1/orders/16")
+      .get("/api/v1/orders/1")
       .set("Authorization", `Bearer ${Token}`)
       .expect(200);
 

@@ -46,24 +46,26 @@ describe("Product endpoint tests", () => {
 
   it("Update a product using PUT api/v1/products/:productId", async () => {
     const updatedProduct = {
-      productName: "Fuso Truck",
-      description: "TATA Truck",
+      productName: "iPhone 14",
+      description: "Apple iPhone model",
     };
     const response = await request(app)
-      .patch("/api/v1/products/5")
+      .patch("/api/v1/products/1")
       .set("Authorization", `Bearer ${adminToken}`)
       .send(updatedProduct)
       .expect(200);
+
+    console.log("Updated Product ===>", response.text);
   });
 
-  // it("Delete a product using DELETE api/v1/products/:productId", async () => {
-  //   const response = await request(app)
-  //     .delete("/api/v1/products/4")
-  //     .set("Authorization", `Bearer ${adminToken}`)
-  //     .expect(200);
+  it("Delete a product using DELETE api/v1/products/:productId", async () => {
+    const response = await request(app)
+      .delete("/api/v1/products/1")
+      .set("Authorization", `Bearer ${adminToken}`)
+      .expect(200);
 
-  //   console.log("Deleted Product ===>", response.text);
-  // });
+    console.log("Deleted Product ===>", response.text);
+  });
 
   afterAll(async () => {
     await prisma.product.deleteMany({
