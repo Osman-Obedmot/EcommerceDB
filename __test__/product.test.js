@@ -58,14 +58,14 @@ describe("Product endpoint tests", () => {
     console.log("Updated Product ===>", response.text);
   });
 
-  // it("Delete a product using DELETE api/v1/products/:productId", async () => {
-  //   const response = await request(app)
-  //     .delete("/api/v1/products/1")
-  //     .set("Authorization", `Bearer ${adminToken}`)
-  //     .expect(200);
+  it("Delete a product using DELETE api/v1/products/:productId", async () => {
+    const response = await request(app)
+      .delete("/api/v1/products/1")
+      .set("Authorization", `Bearer ${adminToken}`)
+      .expect(200);
 
-  //   console.log("Deleted Product ===>", response.text);
-  // });
+    console.log("Deleted Product ===>", response.text);
+  });
 
   // afterAll(async () => {
   //   await prisma.product.deleteMany({
