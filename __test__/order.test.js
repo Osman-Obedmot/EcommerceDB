@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 //   expiresIn: "1h",
 // });
 
-const Token = jwt.sign(
+const adminToken = jwt.sign(
   { userId: 1, role: "ADMIN" },
   process.env.JWT_SECRET,
   { expiresIn: "1h" }
@@ -32,7 +32,7 @@ describe("Order endpoint tests", () => {
   it("Create a new order using POST api/v1/orders", async () => {
     const response = await request(app)
       .post("/api/v1/orders")
-      .set("Authorization", `Bearer ${Token}`)
+      .set("Authorization", `Bearer ${adminToken}`)
       .send(testOrder)
       .expect(200);
 
@@ -42,7 +42,7 @@ describe("Order endpoint tests", () => {
   it("Get an order using GET api/v1/orders/:orderId", async () => {
     const response = await request(app)
       .get("/api/v1/orders/1")
-      .set("Authorization", `Bearer ${Token}`)
+      .set("Authorization", `Bearer ${adminToken}`)
       .expect(200);
 
     console.log("Order is ===>", response.text);
