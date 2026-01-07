@@ -17,9 +17,9 @@ const { description } = require("../validater-joi/password");
 
 describe("Product endpoint tests", () => {
   const testProduct = {
-    productName: "iPhone 14 Pro Max",
+    productName: "iPhone14",
     description: "Latest Apple iPhone model",
-    quantityInStock: 10,
+    quantityInStock: 15,
     category: "Electronics",
     price: 2000,
   };
