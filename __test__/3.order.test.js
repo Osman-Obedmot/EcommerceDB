@@ -5,12 +5,8 @@ const prisma = new PrismaClient();
 
 const jwt = require("jsonwebtoken");
 
-// const Token = jwt.sign({ userId: 1, role: "CUSTOMER" }, process.env.JWT_SECRET, {
-//   expiresIn: "1h",
-// });
-
 const adminToken = jwt.sign(
-  { userId: 1, role: "ADMIN" },
+  { userId: 1},
   process.env.JWT_SECRET,
   { expiresIn: "1h" }
 );
@@ -48,18 +44,4 @@ describe("Order endpoint tests", () => {
 
     console.log("Order is ===>", response.text);
   });
-
-  // it("Update a product using PUT api/v1/products/:productId", async () => {
-  //   const updatedProduct = {
-  //     productName: "iPhone 14",
-  //     description: "Apple iPhone model",
-  //   };
-  //   const response = await request(app)
-  //     .patch("/api/v1/products/1")
-  //     .set("Authorization", `Bearer ${adminToken}`)
-  //     .send(updatedProduct)
-  //     .expect(200);
-
-  //   console.log("Updated Product ===>", response.text);
-  // });
 });
