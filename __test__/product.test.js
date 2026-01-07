@@ -44,28 +44,30 @@ describe("Product endpoint tests", () => {
     console.log("Products are ===>", response.text);
   });
 
-  it("Update a product using PUT api/v1/products/:productId", async () => {
-    const updatedProduct = {
-      productName: "iPhone 14",
-      description: "Apple iPhone model",
-    };
-    const response = await request(app)
-      .patch("/api/v1/products/1")
-      .set("Authorization", `Bearer ${adminToken}`)
-      .send(updatedProduct)
-      .expect(200);
+  //These two tests (delete and update) are run in the order.test.js file to avoid conflicts during testing
 
-    console.log("Updated Product ===>", response.text);
-  });
+  // it("Update a product using PUT api/v1/products/:productId", async () => {
+  //   const updatedProduct = {
+  //     productName: "iPhone 14",
+  //     description: "Apple iPhone model",
+  //   };
+  //   const response = await request(app)
+  //     .patch("/api/v1/products/1")
+  //     .set("Authorization", `Bearer ${adminToken}`)
+  //     .send(updatedProduct)
+  //     .expect(200);
 
-  it("Delete a product using DELETE api/v1/products/:productId", async () => {
-    const response = await request(app)
-      .delete("/api/v1/products/1")
-      .set("Authorization", `Bearer ${adminToken}`)
-      .expect(200);
+  //   console.log("Updated Product ===>", response.text);
+  // });
 
-    console.log("Deleted Product ===>", response.text);
-  });
+  // it("Delete a product using DELETE api/v1/products/:productId", async () => {
+  //   const response = await request(app)
+  //     .delete("/api/v1/products/1")
+  //     .set("Authorization", `Bearer ${adminToken}`)
+  //     .expect(200);
+
+  //   console.log("Deleted Product ===>", response.text);
+  // });
 
   // afterAll(async () => {
   //   await prisma.product.deleteMany({
