@@ -17,6 +17,7 @@ const adminToken = jwt.sign(
 
 const validate = require("../middleware/validate");
 const orderSchema = require("../validater-joi/products.schema");
+const productSchema = require("../validater-joi/products.schema");
 const { description } = require("../validater-joi/password");
 
 describe("Order endpoint tests", () => {
@@ -46,5 +47,19 @@ describe("Order endpoint tests", () => {
       .expect(200);
 
     console.log("Order is ===>", response.text);
+  });
+
+  it("Update a product using PUT api/v1/products/:productId", async () => {
+    const updatedProduct = {
+      productName: "iPhone 14",
+      description: "Apple iPhone model",
+    };
+    const response = await request(app)
+      .patch("/api/v1/products/1")
+      .set("Authorization", `Bearer ${adminToken}`)
+      .send(updatedProduct)
+      .expect(200);
+
+    console.log("Updated Product ===>", response.text);
   });
 });
