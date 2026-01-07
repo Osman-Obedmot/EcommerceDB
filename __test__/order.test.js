@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 // });
 
 const adminToken = jwt.sign(
-  { userId: 1, role: "ADMIN" },
+  { userId: 1, roles: "ADMIN" },
   process.env.JWT_SECRET,
   { expiresIn: "1h" }
 );
@@ -24,10 +24,10 @@ describe("Order endpoint tests", () => {
   const testOrder = {
     products: [
       {
-        "productName": "iPhone14",
-        "quantity": 2
+        productName: "iPhone14",
+        quantity: 2,
       },
-    ]
+    ],
   };
 
   // const products = [
