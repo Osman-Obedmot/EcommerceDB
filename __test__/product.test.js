@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 const jwt = require("jsonwebtoken");
 
 const adminToken = jwt.sign(
-  { userId: 1, roles: "ADMIN" },
+  { userId: 1, role: "ADMIN" },
   process.env.JWT_SECRET,
   { expiresIn: "1h" }
 );
