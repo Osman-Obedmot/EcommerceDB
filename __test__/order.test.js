@@ -16,16 +16,16 @@ const adminToken = jwt.sign(
 );
 
 const validate = require("../middleware/validate");
-const orderSchema = require("../validater-joi/products.schema");
+//const orderSchema = require("../validater-joi/products.schema");
 const productSchema = require("../validater-joi/products.schema");
 const { description } = require("../validater-joi/password");
 
 describe("Order endpoint tests", () => {
   const testOrder = {
-    "products": [
+    products: [
       {
         "productName": "iPhone14",
-        "quantity": 2,
+        "quantity": 2
       },
     ]
   };
