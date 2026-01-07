@@ -20,22 +20,28 @@ const orderSchema = require("../validater-joi/products.schema");
 const productSchema = require("../validater-joi/products.schema");
 const { description } = require("../validater-joi/password");
 
-
 describe("Order endpoint tests", () => {
-  const testOrder = {
-    products: [
-      {
-        productName: "iPhone14",
-        quantity: 2,
-      },
-    ],
-  };
+  // const testOrder = {
+  //   products: [
+  //     {
+  //       productName: "iPhone14",
+  //       quantity: 2,
+  //     },
+  //   ],
+  // };
+
+  const products = [
+    {
+      productName: "iPhone14",
+      quantity: 2,
+    },
+  ];
 
   it("Create a new order using POST api/v1/orders", async () => {
     const response = await request(app)
       .post("/api/v1/orders")
       .set("Authorization", `Bearer ${adminToken}`)
-      .send(testOrder)
+      .send({ products })
       .expect(200);
 
     console.log("Created order ===>", response.text);
