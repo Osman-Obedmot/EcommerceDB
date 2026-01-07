@@ -44,7 +44,7 @@ describe("Product endpoint tests", () => {
     console.log("Products are ===>", response.text);
   });
 
-  //These two tests (delete and update) are run in the order.test.js file to avoid conflicts during testing
+  //These two tests (delete and update) are commented to avoid conflicts during testing
 
   // it("Update a product using PUT api/v1/products/:productId", async () => {
   //   const updatedProduct = {
