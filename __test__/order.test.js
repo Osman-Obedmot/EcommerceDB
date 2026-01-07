@@ -41,7 +41,7 @@ describe("Order endpoint tests", () => {
     const response = await request(app)
       .post("/api/v1/orders")
       .set("Authorization", `Bearer ${adminToken}`)
-      .send({ products })
+      .send(products)
       .expect(200);
 
     console.log("Created order ===>", response.text);
