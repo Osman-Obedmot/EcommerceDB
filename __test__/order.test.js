@@ -24,8 +24,8 @@ describe("Order endpoint tests", () => {
   const testOrder = {
     "products": [
       {
-        productName: "iPhone14",
-        quantity: 2,
+        "productName": "iPhone14",
+        "quantity": 2,
       },
     ]
   };
