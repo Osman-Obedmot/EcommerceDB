@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
 
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -15,6 +16,7 @@ const orderItemRouter = require('./routes/orderItemRouter');
 const cors = require('cors');
 app.use(cors());
 app.use(express.json());
+app.use(morgan('common'));
 
 app.get('/', (req, res) => {
   res.send('Welcome to the OSMAN Shopping Centre');
